@@ -26,7 +26,7 @@ public class IjobInfoService {
 		}
 	}
 
-//サイトから取ったデータをデータベースに入れるの方法
+//サイトから取ったデータをデータベースに入れるのメソッド
 	public void forAddingDataToTheDatabaseFormal(JobInfo jobInfo) throws ClassNotFoundException {
 		JdcbConn con = new JdcbConn();
 		try {
@@ -47,7 +47,7 @@ public class IjobInfoService {
 			e.printStackTrace();
 		}
 	}
-	//元のデータをクリア、
+	//元のデータtableをクリア、新データtable作りメソッド
 	public void deleteAndRebuildTheTable() throws SQLException {
 		JdcbConn con = new JdcbConn();
 		try {

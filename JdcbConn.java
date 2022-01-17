@@ -32,7 +32,7 @@ public class JdcbConn {
     }
 
  
-     
+     //SQLにコマンドを入力するのメソッド
     public void insertIjobInfoData(String sql) throws SQLException {
     	
     	 System.out.println(sql);

@@ -8,7 +8,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 //サイトからデータをとるのクラス
-
+//サイトからデータを取る、データベースに書き込み
 public class GetIjobDataTest {
 	public static void main(String[] args) throws ClassNotFoundException {
 		Document document;
@@ -40,7 +40,7 @@ public class GetIjobDataTest {
 				Elements eachCompanyInfo = elment.last()
 						.getElementsByClass("fl paddinglr50 bbox w100per bdhuisebottom2 paddingtb45 pos_r ");
 
-				// 整体会社の情報を主体として、その中各情報を取るｓ
+				// 整体会社の情報を主体として、その中各情報を取る
 				for (int j = 0; j < eachCompanyInfo.size(); j++) {
 					JobInfo jobInfo = new JobInfo();
 					Elements companyName = eachCompanyInfo.get(j)
