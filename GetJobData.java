@@ -17,7 +17,7 @@ import org.jsoup.select.Elements;
 
 public class GetJobData {
 	/**
-	 * サイトからデータを取る、データベースに書き込み
+	 * サイトから情報を取る、データベースに書き込み
 	 * 
 	 * @param args
 	 * @throws ClassNotFoundException
@@ -30,7 +30,7 @@ public class GetJobData {
 		try {
 			// データベースの古いデータをクリアする
 			ijobInfoService.deleteIjobData();
-			// 目標サイトのURLを設定
+			// サイトのURLを設定
 			document = Jsoup.connect("http://ijob.jp/index.php?pN=5&ctl=Index&act=joblist&type=3&c_hangye=11").get();
 			// ページ数を取得
 			Elements getPageNum = document.getElementsByClass("fl fybo fy_ym ");
