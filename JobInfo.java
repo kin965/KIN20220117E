@@ -1,28 +1,40 @@
 package kin;
+
+/**
+ * 実装クラス
+ * 
+ * @author jinch
+ *
+ */
 public class JobInfo {
 	public JobInfo() {
-		
+
 	}
-//社名
+
+	/**
+	 * 社名
+	 */
 	private String companyName;
-//仕事名
+
+	/**
+	 * 仕事名
+	 */
 	private String jobName;
-//所在地
+
+	/**
+	 * 所在地
+	 */
 	private String address;
-//駅
+
+	/**
+	 * 駅
+	 */
 	private String station;
-//給料
+
+	/**
+	 * 給料
+	 */
 	private String salaryLimit;
-
-	private String treatment;
-
-	public String getTreatment() {
-		return treatment;
-	}
-
-	public void setTreatment(String treatment) {
-		this.treatment = treatment;
-	}
 
 	public String getSalaryLimit() {
 		return salaryLimit;
@@ -63,9 +75,5 @@ public class JobInfo {
 	public void setStation(String station) {
 		this.station = station;
 	}
-//	   @Override
-//	    public String toString() {
-//	        return jobName+companyName+address+salaryLimit;
-//	    }
 
 }

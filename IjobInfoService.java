@@ -2,7 +2,11 @@ package kin;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
-
+/**
+ * SQLにデータを処理のコマンドを作成のクラス
+ * @author jinch
+ *
+ */
 public class IjobInfoService {
 
 	/**
@@ -11,7 +15,7 @@ public class IjobInfoService {
 	 * @param jobInfo
 	 * @throws ClassNotFoundException
 	 */
-	public void forAddingDataToTheDatabaseFormal(JobInfo jobInfo) throws ClassNotFoundException {
+	public void AddIjobData(JobInfo jobInfo) throws ClassNotFoundException {
 		JdcbConn con = new JdcbConn();
 		try {
 			con.getDbcom();
@@ -23,7 +27,7 @@ public class IjobInfoService {
 			sql += "'" + jobInfo.getStation() + "',";
 			sql += "'" + jobInfo.getSalaryLimit() + "',";
 			sql += "'" + new Timestamp(System.currentTimeMillis()) + "')";
-			con.insertIjobInfoData(sql);
+			con.upData(sql);
 			con.closeDbcom();
 			// System.out.println(sql);
 		} catch (SQLException e) {
@@ -33,16 +37,16 @@ public class IjobInfoService {
 	}
 
 	/**
-	 * 元のデータtableをクリア、新データtable作りメソッド
+	 * 元のデータをクリア
 	 * 
 	 * @throws SQLException
 	 */
-	public void deleteAndRebuildTheTable() throws SQLException {
+	public void deleteIjobData() throws SQLException {
 		JdcbConn con = new JdcbConn();
 		try {
 			con.getDbcom();
 			String sql = "DELETE  FROM  ijobinfoformal";
-			con.insertIjobInfoData(sql);
+			con.upData(sql);
 			System.out.println(sql);
 			con.closeDbcom();
 		} catch (ClassNotFoundException e) {
