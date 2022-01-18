@@ -5,28 +5,12 @@ import java.sql.Timestamp;
 
 public class IjobInfoService {
 
-	// テストの方法、今は使わず
-	public void forAddingDataToTheDatabase(JobInfo jobInfo) throws ClassNotFoundException {
-		JdcbConn con = new JdcbConn();
-		try {
-			con.getDbcom();
-			String sql = null;
-			sql = "insert into ijobinfo ";
-			sql += "values('" + jobInfo.getCompanyName() + "',";
-			sql += "'" + jobInfo.getJobName() + "',";
-			sql += "'" + jobInfo.getAddress() + "',";
-			sql += "'" + jobInfo.getSalaryLimit() + "',";
-			sql += "'" + new Timestamp(System.currentTimeMillis()) + "')";
-			con.insertIjobInfoData(sql);
-			con.closeDbcom();
-			// System.out.println(sql);
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		}
-	}
-
-//サイトから取ったデータをデータベースに入れるのメソッド
+	/**
+	 * サイトから取ったデータをデータベースに入れるのメソッド
+	 * 
+	 * @param jobInfo
+	 * @throws ClassNotFoundException
+	 */
 	public void forAddingDataToTheDatabaseFormal(JobInfo jobInfo) throws ClassNotFoundException {
 		JdcbConn con = new JdcbConn();
 		try {
@@ -47,24 +31,22 @@ public class IjobInfoService {
 			e.printStackTrace();
 		}
 	}
-	//元のデータtableをクリア、新データtable作りメソッド
+
+	/**
+	 * 元のデータtableをクリア、新データtable作りメソッド
+	 * 
+	 * @throws SQLException
+	 */
 	public void deleteAndRebuildTheTable() throws SQLException {
 		JdcbConn con = new JdcbConn();
 		try {
-	    con.getDbcom();
-		String sql=" DROP TABLE ijobinfoformal;\n"
-				+ " create table ijobinfoformal(\n"
-				+ " companyName varchar,\n"
-				+ " jobName varchar,\n"
-				+ " address varchar,\n"
-				+ " station varchar,\n"
-				+ " salaryLimit varchar,\n"
-				+ " updatetime    timestamp(6) without time zone)";
-		  con.insertIjobInfoData(sql);
-		  System.out.println(sql);
-	      con.closeDbcom();
+			con.getDbcom();
+			String sql = "DELETE  FROM  ijobinfoformal";
+			con.insertIjobInfoData(sql);
+			System.out.println(sql);
+			con.closeDbcom();
 		} catch (ClassNotFoundException e) {
-			// TODO 自動生成された catch ブロック
+
 			e.printStackTrace();
 		}
 	}

@@ -8,52 +8,52 @@ import java.sql.Statement;
 
 public class JdcbConn {
 
-    //ロード
-    Connection conn = null;
-    //駆動
-    Statement stmt = null;
-    //結果回収
-    ResultSet rs = null;
+	// ロード
+	Connection conn = null;
+	// 駆動
+	Statement stmt = null;
+	// 結果回収
+	ResultSet rs = null;
 
-    String DB_URL = "jdbc:postgresql://localhost:5432/kin";
-    String USER = "postgres";
-    String PASS = "postgres";
+	String DB_URL = "jdbc:postgresql://localhost:5432/kin";
+	String USER = "postgres";
+	String PASS = "postgres";
 
-    public Connection getDbcom() throws ClassNotFoundException {
-        if (conn == null) {
-            Class.forName("org.postgresql.Driver");
-            try {
-                conn = DriverManager.getConnection(DB_URL, USER, PASS);
-                stmt = conn.createStatement();
-            } catch (SQLException ex) {
-            }
-        }
-        return conn;
-    }
+	public Connection getDbcom() throws ClassNotFoundException {
+		if (conn == null) {
+			Class.forName("org.postgresql.Driver");
+			try {
+				conn = DriverManager.getConnection(DB_URL, USER, PASS);
+				stmt = conn.createStatement();
+			} catch (SQLException ex) {
+			}
+		}
+		return conn;
+	}
 
- 
-     //SQLにコマンドを入力するのメソッド
-    public void insertIjobInfoData(String sql) throws SQLException {
-    	
-    	 System.out.println(sql);
-    	 stmt.executeUpdate(sql);
-    		
-    	
+	/**
+	 * SQLにコマンドを入力するのメソッド
+	 * 
+	 * @param sql
+	 * @throws SQLException
+	 */
+	public void insertIjobInfoData(String sql) throws SQLException {
 
-    }
-    
-    
+		System.out.println(sql);
+		stmt.executeUpdate(sql);
 
-    public void closeDbcom() throws SQLException {
-        if (rs != null) {
-            rs.close();
-        }
-        if (stmt != null) {
-            stmt.close();
-        }
-        if (conn != null) {
-            conn.close();
-        }
-    }
+	}
+
+	public void closeDbcom() throws SQLException {
+		if (rs != null) {
+			rs.close();
+		}
+		if (stmt != null) {
+			stmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+	}
 
 }
